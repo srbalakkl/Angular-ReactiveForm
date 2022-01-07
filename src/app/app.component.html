@@ -5,7 +5,6 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input
-                            class="form-control"
                             formControlName="username"
                             id="username"
                             type="text">
@@ -34,10 +33,11 @@
                     <div>
                         <label for="streetID">Street</label>
                         <input formControlName="streetFCN" id="streetID" type="text">
+                        <span *ngIf="signUpForm.get('address.streetFCN')?.invalid && signUpForm.get('address.streetFCN')?.touched">Please Enter the Valid Street Name !</span>
                     </div>
                     <div>
                         <label for="pincodeID">Pincode</label>
-                        <input formControlName="pincodeFCN" id="pincodeID" name="pincode" type="number">
+                        <input formControlName="pincodeFCN" id="pincodeID" name="pincode" type="text">
                     </div>
                     <div>
                         <label for="LocalityID">Locality</label>
@@ -47,7 +47,6 @@
                         <label for="addressID">Address</label>
                         <input formControlName="addressFCN" id="addressID" name="" type="text">
                     </div>
-
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
