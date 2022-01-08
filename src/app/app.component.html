@@ -58,7 +58,7 @@
 
                     <button type="button" (click)="addHobbies()"> + Add Hobbies</button>
 
-                    <div *ngFor="let hobbie of hobbiesFA.controls;let i = hobbiesFA">
+                    <div *ngFor="let hobbie of hobbiesFA.controls;let i = index">
                         <label for="hobbie-{{i}}">Hobbie :</label>
                         <input type="text" id="hobbie-{{i}}" [formControlName]="i">
                     </div>
