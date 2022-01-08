@@ -48,8 +48,25 @@
                         <input formControlName="addressFCN" id="addressID" name="" type="text">
                     </div>
                 </div>
+
+                <div formArrayName="hobbiesFA">
+                    <h4>Hobbies</h4>
+<!--                    <button (click)="onAddHobbies()" type="button">Add Hobbies</button>-->
+<!--                    <div *ngFor="let hobbyControl of signUpForm.get('hobbiesFA')?.Controls;let i = index">-->
+<!--                        <input id="" name="" type="text" [formControlName]="i">-->
+<!--                    </div>-->
+
+                    <button type="button" (click)="addHobbies()"> + Add Hobbies</button>
+
+                    <div *ngFor="let hobbie of hobbiesFA.controls;let i = hobbiesFA">
+                        <label for="hobbie-{{i}}">Hobbie :</label>
+                        <input type="text" id="hobbie-{{i}}" [formControlName]="i">
+                    </div>
+                </div>
+
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>
     </div>
 </div>
+

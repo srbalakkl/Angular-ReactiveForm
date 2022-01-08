@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-root',
@@ -11,6 +11,10 @@ export class AppComponent implements OnInit {
     genders = ['male', 'female'];
 
     signUpForm!: FormGroup;
+
+    constructor(private fb:FormBuilder) {
+    }
+
 
     //todo:un commended method is the angular.io recommended method
 
@@ -35,6 +39,8 @@ export class AppComponent implements OnInit {
                 localityFCN: new FormControl(null,Validators.required),
                 addressFCN : new FormControl(null,Validators.required),
             }),
+
+            hobbiesFA: new FormArray( [])
         });
         console.log(this.signUpForm)
     }
@@ -42,5 +48,22 @@ export class AppComponent implements OnInit {
     onsubmit() {
         console.log(this.signUpForm.value)
         console.log(this.signUpForm)
+    }
+
+    // onAddHobbies() {
+    //     const controls = new FormControl(null,Validators.required);
+    //     (<FormArray>this.signUpForm.get('hobbiesFA')).push(controls);
+    // }
+
+    get hobbiesFA() {
+        return this.signUpForm.get('hobbiesFA') as FormArray;
+
+    /*   Note: Because the returned control is of the type AbstractControl,
+        you need to provide an explicit type to access the method syntax for the form array instance.*/
+
+    }
+
+    addHobbies(){
+        this.hobbiesFA.push(new FormControl(''));
     }
 }
